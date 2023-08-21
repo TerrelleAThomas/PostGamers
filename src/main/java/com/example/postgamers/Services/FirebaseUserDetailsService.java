@@ -1,4 +1,4 @@
-package com.example.postgamers.Security;
+package com.example.postgamers.Services;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthException;
