@@ -9,7 +9,7 @@ function SignUp () {
     const passwordRef = useRef("");
     const firstnameRef = useRef("");
     const lastnameRef = useRef("");
-    const universitynameRef = useRef("");
+    const gamechoiceRef = useRef("");
     const [errors, setErrors] = useState("");
 
     let navigate = useNavigate();
@@ -66,12 +66,6 @@ function SignUp () {
                 </div>
                 <br></br>
                 <div className="form-floating">
-                    <input type="text" className="form-control" id="floatingInput" placeholder="University"
-                           ref={universitynameRef}/>
-                    <label htmlFor="floatingInput">University</label>
-                </div>
-                <br></br>
-                <div className="form-floating">
                     <input type="email" className="form-control" id="floatingInput" placeholder="name@example.com"
                            ref={emailRef}/>
                     <label htmlFor="floatingInput">Email address</label>
@@ -83,12 +77,20 @@ function SignUp () {
                     <label htmlFor="floatingPassword">Password</label>
                 </div>
                 <br></br>
-                <div className="mb-3 form-check">
-                    <input type="checkbox" className="form-check-input" id="exampleCheck1"/>
-                    <label className="form-check-label text-white" htmlFor="exampleCheck1">By signing up, you agree to our terms and regulations</label>
+                <div className="form-floating">
+                    <input type="choice" className="form-control" id="floatingPassword" placeholder="gameChoice"
+                           ref={gamechoiceRef}/>
+                    <label htmlFor="floatingPassword">Game Choice</label>
                 </div>
+                <br></br>
 
                 <button className="mt-3 w-100 btn btn-lg btn-primary" type="submit">Sign Up</button>
+                <br></br>
+                <br></br>
+                <br></br>
+
+
+
             </form>
             <br></br>
             <br></br>
