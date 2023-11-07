@@ -20,3 +20,67 @@
 | 18  | 3    | Weak Authentication Mechanisms                             | Security        | Lack of Strong Authentication Methods  | Reports of Unauthorized Access              | Implement Multi-Factor Authentication, Regular Security Audits    | Security Team      | 3            | 3      | Mitigate - Enhance Authentication Mechanisms                      |
 | 19  | 3    | Algorithmic Bias in User Matching                          | Algorithm       | Inherent Bias in Matching Algorithms    | Reports of Bias or Discrimination             | Implement Bias Detection and Mitigation, Regular Algorithm Audits | Algorithm Team     | 3            | 3      | Mitigate - Continuous Algorithm Monitoring and Improvement       |
 | 20  | 3    | Security Consistency Across Gaming Platforms               | Security        | Varied Security Measures Across Platforms | Reports of Security Gaps                     | Implement Unified Security Standards, Regular Security Audits   | Security Team      | 3            | 3      | Mitigate - Establish Unified Security Protocols Across Platforms |
+
+
+
+
+
+# User Table
+
+| Field         | Field Type      | Type         | Required | Description               | Example                  |
+|---------------|-----------------|--------------|----------|---------------------------|--------------------------|
+| UserID (PK)   | INT             | Primary Key  | Yes      | Unique identifier         | 1                        |
+| FirstName     | VARCHAR(255)    |              | No       | User's first name         | John                     |
+| LastName      | VARCHAR(255)    |              | No       | User's last name          | Doe                      |
+| Username      | VARCHAR(255)    |              | Yes      | User's username           | johnD                    |
+| Email         | VARCHAR(255)    |              | Yes      | User's email              | john@example.com        |
+| Password      | VARCHAR(255)    |              | Yes      | Hashed password           | **************          |
+| DateJoined    | DATETIME        |              | Yes      | Date of joining           | 2022-01-01 12:00:00     |
+| ConsoleChoice | VARCHAR(255)    |              | No       | Game console choice       | PlayStation             |
+
+# IGDB Table
+
+| Field      | Field Type      | Type         | Required | Description               | Example                  |
+|------------|-----------------|--------------|----------|---------------------------|--------------------------|
+| IGDBID (PK)| INT             | Primary Key  | Yes      | Unique identifier from IGDB | 12345                   |
+| Title      | VARCHAR(255)    |              | Yes      | Game title                | The Witcher 3            |
+| Genre      | VARCHAR(255)    |              |          | Game genre                | RPG                      |
+| Platform   | VARCHAR(255)    |              |          | Game platform             | PC                       |
+| ReleaseDate| DATE            |              |          | Release date              | 2015-05-19               |
+| Description| TEXT            |              |          | Game description          | Action RPG set in an open fantasy world |
+| IGDBRating | FLOAT           |              |          | IGDB rating               | 9.5                      |
+| Creator    | VARCHAR(255)    |              |          | Game creator/developer    | CD Projekt Red           |
+
+# UserGame Table
+
+| Field       | Field Type      | Type         | Required | Description               | Example                  |
+|-------------|-----------------|--------------|----------|---------------------------|--------------------------|
+| UserGameID  | INT             | Primary Key  | Yes      | Unique identifier         | 1                        |
+| UserID (FK) | INT             | Foreign Key  | Yes      | References User           | 1                        |
+| GameID (FK) | INT             | Foreign Key  | Yes      | References IGDB           | 12345                    |
+| Playtime    | INT             |              |          | Total playtime            | 50                       |
+| LastPlayed  | DATETIME        |              |          | Last play date            | 2022-02-15 18:45:00      |
+| Status      | VARCHAR(255)    |              |          | Game status               | Playing                  |
+
+# Post Table
+
+| Field        | Field Type      | Type         | Required | Description               | Example                  |
+|--------------|-----------------|--------------|----------|---------------------------|--------------------------|
+| PostID (PK)  | INT             | Primary Key  | Yes      | Unique identifier         | 1                        |
+| UserID (FK)  | INT             | Foreign Key  | Yes      | References User           | 1                        |
+| GameID (FK)  | INT             | Foreign Key  | Yes      | References IGDB           | 12345                    |
+| Title        | VARCHAR(255)    |              | Yes      | Post title                | The Witcher 3 Impressions|
+| Content      | TEXT            |              |          | Post content              | Just started playing The Witcher 3 and... |
+| CreationDate | DATETIME        |              | Yes      | Creation date             | 2022-02-16 09:15:00     |
+| UpdateDate   | DATETIME        |              |          | Last update date          | 2022-02-16 12:30:00     |
+
+# Comment Table
+
+| Field       | Field Type      | Type         | Required | Description               | Example                  |
+|-------------|-----------------|--------------|----------|---------------------------|--------------------------|
+| CommentID (PK)| INT            | Primary Key  | Yes      | Unique identifier         | 1                        |
+| PostID (FK) | INT             | Foreign Key  | Yes      | References Post           | 1                        |
+| UserID (FK) | INT             | Foreign Key  | Yes      | References User           | 2                        |
+| Content     | TEXT            |              | Yes      | Comment content           | Enjoy the game! It gets even better... |
+| CreationDate| DATETIME        |              | Yes      | Creation date             | 2022-02-16 10:00:00     |
+| UpdateDate  | DATETIME        |              |          | Last update date          | 2022-02-16 10:30:00     |
